@@ -1,0 +1,159 @@
+body{
+    
+        font-family: "Plus Jakarta Sans", sans-serif    !important;
+        font-optical-sizing: auto;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        /* font-weight: <weight>;
+        font-style: normal; */
+
+}
+.container
+{
+    flex: 1;
+}
+.navbar{
+    height: 5rem;
+    background-color: white;
+}
+.fa-compass
+{
+    font-size: 2rem;
+}
+.nav-link
+{
+    color: black !important;
+}
+/* .f-info{
+    background-color: gainsboro;
+    display:flex;
+    justify-content: center;
+}
+a{
+    color: black;
+    text-decoration: none;
+}
+.f-links a
+{
+    text-decoration: none;
+    color: #222222;
+}
+
+.f-links a:hover
+{
+    text-decoration: underline;
+}
+.f-info
+{
+    height: 2rem;
+    display: flex;
+
+}
+.f-social a
+{
+    text-decoration: none;
+    color: #222222;
+} */
+
+/* General Footer Styles */
+footer {
+    background-color: #f8f8f8;
+    padding: 0.5rem;
+    border-top: 1px solid #e7e7e7;
+    font-family: Arial, sans-serif;
+}
+
+/* Info Container */
+.f-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 3rem;
+}
+
+/* Social Media Links */
+.f-social a {
+    text-decoration: none;
+    color: #222222;
+    margin: 0 0.5rem;
+    font-size: 1.5rem;
+}
+.card a{
+    text-decoration: none;
+    color: #222222;
+}
+.card a:hover
+{
+    color: #ff5a5f;
+}
+
+.f-social a:hover {
+    color: #ff5a5f; /* Airbnb primary color */
+}
+
+/* Copyright Text */
+.f-info > div:nth-child(2) {
+    font-size: 0.9rem;
+    color: #767676;
+}
+
+/* Links Container */
+.f-links a {
+    text-decoration: none;
+    color: #222222;
+    margin-left: 1rem;
+}
+
+.f-links a:hover {
+    text-decoration: underline;
+}
+
+.listing-card{
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+    border:none !important;
+}
+.card-img-top
+{
+    border-radius: 1rem !important ;
+    width: 100% !important;
+    object-fit: cover !important ;
+}
+
+.card-img-overlay {
+    opacity: 0;
+}
+.card-img-overlay:hover
+{
+    opacity: 0.2;
+    background-color: white;
+}
+.add-button
+{
+    background-color: #ff5a5f !important;
+    border: none;
+    color: white !important;
+}
+.show-img{
+    height: 30vh;
+    width: 100%;
+}
+footer{
+    background-color: #F3F3F3;
+    padding-top: 10px;
+    padding-bottom: 0px;
+}
+.desc
+{
+    margin-top: 1rem;
+    font-weight: 10%;
+}
+.btns{
+    display: flex;
+}
+
+#map { 
+    height: 200px;
+    width: 50%; 
+}
