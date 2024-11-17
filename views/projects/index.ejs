@@ -1,0 +1,57 @@
+<% layout("/layouts/boilerplate") -%>
+<body>
+    <div class="container mt-4">
+        <h1 class="text-center">All Projects</h1>
+        <div class="row">
+            <% projects.forEach(project => { %>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <!-- Display Project Images -->
+                        <% if (project.images.length > 0) { %>
+                            <img src="<%= project.images[0].url %>" class="card-img-top" alt="<%= project.name %> image">
+                        <% } else { %>
+                            <img src="https://via.placeholder.com/400x300" class="card-img-top" alt="Default Project Image">
+                        <% } %>
+                        
+                        <div class="card-body">
+                            <!-- Project Name -->
+                            <h5 class="card-title"><%= project.name %></h5>
+
+                            <!-- Project Description -->
+                            <p class="card-text">
+                                <%= project.description.length > 100 ? project.description.substring(0, 100) + "..." : project.description %>
+                            </p>
+
+                            <!-- Status Badge -->
+                            <span class="badge <%= project.status === 'Completed' ? 'bg-success' : 'bg-warning' %>">
+                                <%= project.status %>
+                            </span>
+                        </div>
+
+                        <div class="card-footer d-flex justify-content-between align-items-center">
+                            <!-- GitHub and Hosted Links -->
+                            <div>
+                                <a href="<%= project.githubLink %>" target="_blank" class="btn btn-primary btn-sm me-2">
+                                    GitHub
+                                </a>
+                                <a href="<%= project.hostedLink %>" target="_blank" class="btn btn-secondary btn-sm">
+                                    Live Demo
+                                </a>
+                            </div>
+
+                            <!-- View Project Button -->
+                            <a href="/projects/<%= project._id %>" class="btn btn-info btn-sm">
+                                View Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+
+        <!-- Button to Create New Project -->
+        <div class="text-center mt-4">
+            <a href="/projects/new" class="btn btn-success">Create New Project</a>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,88 @@
+<% layout("/layouts/boilerplate") -%>
+<body>
+    <div class="row">
+        <div class="col-8 offset-2">
+            <br>
+            <h3>Editing Project: <%= project.name %></h3>
+            <br>
+            <form method="post" action="/projects/<%= project._id %>?_method=PATCH" class="needs-validation" novalidate enctype="multipart/form-data">
+                <!-- Project Name -->
+                <div class="mb-3">
+                    <label for="name" class="form-label"><b>Project Name</b></label>
+                    <input type="text" required name="project[name]" class="form-control" placeholder="Enter project name" value="<%= project.name %>"/>
+                    <div class="invalid-feedback">Project name is mandatory.</div>
+                </div>
+
+                <!-- Description -->
+                <div class="mb-3">
+                    <label for="description" class="form-label"><b>Description</b></label>
+                    <textarea required name="project[description]" class="form-control" rows="5" placeholder="Describe your project"><%= project.description %></textarea>
+                    <div class="invalid-feedback">Description is required.</div>
+                </div>
+
+                <!-- Previous Images -->
+                <div class="mb-3">
+                    <label for="images" class="form-label"><b>Previous Images</b></label>
+                    <div>
+                        <% project.images.forEach(image => { %>
+                            <img src="<%= image.url %>" height="100px" style="margin-right: 10px;" alt="Previous Image"/>
+                        <% }); %>
+                    </div>
+                </div>
+
+                <!-- Upload New Images -->
+                <div class="mb-3">
+                    <label for="images" class="form-label"><b>Upload New Images</b></label>
+                    <input type="file" name="project[images]" multiple class="form-control"/>
+                    <div class="invalid-feedback">At least one image is mandatory.</div>
+                </div>
+
+                <!-- Status -->
+                <div class="mb-3">
+                    <label for="status" class="form-label"><b>Status</b></label>
+                    <select name="project[status]" class="form-select" required>
+                        <option value="Working" <%= project.status === "Working" ? "selected" : "" %>>Working</option>
+                        <option value="Completed" <%= project.status === "Completed" ? "selected" : "" %>>Completed</option>
+                    </select>
+                    <div class="invalid-feedback">Please select the project status.</div>
+                </div>
+
+                <!-- GitHub Link -->
+                <div class="mb-3">
+                    <label for="githubLink" class="form-label"><b>GitHub Link</b></label>
+                    <input type="url" name="project[githubLink]" class="form-control" placeholder="Enter GitHub repository link" value="<%= project.githubLink %>" required/>
+                    <div class="invalid-feedback">GitHub link is required.</div>
+                </div>
+
+                <!-- Hosted Link -->
+                <div class="mb-3">
+                    <label for="hostedLink" class="form-label"><b>Hosted Link</b></label>
+                    <input type="url" name="project[hostedLink]" class="form-control" placeholder="Enter hosted project link" value="<%= project.hostedLink %>" required/>
+                    <div class="invalid-feedback">Hosted link is required.</div>
+                </div>
+
+                <!-- Submit Button -->
+                <button class="btn btn-primary">Update Project</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Example of client-side validation (form will not submit if invalid)
+        (() => {
+            'use strict';
+            window.addEventListener('load', () => {
+                const forms = document.getElementsByClassName('needs-validation');
+                Array.prototype.filter.call(forms, (form) => {
+                    form.addEventListener('submit', (event) => {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+</body>

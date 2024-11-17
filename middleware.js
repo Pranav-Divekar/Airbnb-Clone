@@ -1,4 +1,4 @@
-const listing = require("./models/listing.js");
+const listing = require("./models/project.js");
 const ExpressError = require("./utils/ExpressError.js");
 const schemavalidate = require("./schemaforvalidate.js");
 const Review = require("./models/review.js");

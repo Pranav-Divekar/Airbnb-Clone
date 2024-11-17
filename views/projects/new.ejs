@@ -1,0 +1,138 @@
+<% layout("/layouts/boilerplate") -%>
+<head>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+        }
+        .form-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 40px auto;
+        }
+        h3 {
+            text-align: center;
+            color: #333;
+        }
+        .form-label {
+            font-weight: bold;
+            color: #555;
+        }
+        .form-control {
+            border-radius: 5px;
+        }
+        .btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .mb-3 {
+            margin-bottom: 20px;
+        }
+        .invalid-feedback {
+            font-size: 0.9rem;
+            color: #dc3545;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h3>Create New Project</h3>
+            <form method="post" action="/projects?_method=POST" novalidate class="needs-validation" enctype="multipart/form-data">
+                
+                <!-- Project Name -->
+                <div class="mb-3">
+                    <label for="name" class="form-label"><b>Project Name</b></label>
+                    <input type="text" name="project[name]" class="form-control" placeholder="Enter project name" required />
+                    <div class="invalid-feedback">Project name is mandatory.</div>
+                </div>
+
+                <!-- Description -->
+                <div class="mb-3">
+                    <label for="description" class="form-label"><b>Description</b></label>
+                    <textarea name="project[description]" class="form-control" placeholder="Describe your project" required cols="30" rows="5"></textarea>
+                    <div class="invalid-feedback">Description is required.</div>
+                </div>
+
+                <!-- Upload Images -->
+                <div class="mb-3">
+                    <label for="images" class="form-label"><b>Upload Images</b></label>
+                    <input required type="file" name="project[images]" multiple class="form-control" />
+                    <div class="invalid-feedback">At least one image is mandatory.</div>
+                </div>
+
+                <!-- Status -->
+                <div class="mb-3">
+                    <label for="status" class="form-label"><b>Status</b></label>
+                    <select name="project[status]" class="form-select" required>
+                        <option value="" selected disabled>Select status</option>
+                        <option value="Working">Working</option>
+                        <option value="Completed">Completed</option>
+                    </select>
+                    <div class="invalid-feedback">Please select the project status.</div>
+                </div>
+
+                <!-- GitHub Link -->
+                <div class="mb-3">
+                    <label for="githubLink" class="form-label"><b>GitHub Link</b></label>
+                    <input type="url" name="project[githubLink]" class="form-control" placeholder="Enter GitHub repository link" required />
+                    <div class="invalid-feedback">GitHub link is required.</div>
+                </div>
+
+                <!-- Hosted Link -->
+                <div class="mb-3">
+                    <label for="hostedLink" class="form-label"><b>Hosted Link</b></label>
+                    <input type="url" name="project[hostedLink]" class="form-control" placeholder="Enter hosted project link" required />
+                    <div class="invalid-feedback">Hosted link is required.</div>
+                </div>
+
+                <!-- Owner -->
+                <div class="mb-3">
+                    <label for="owner" class="form-label"><b>Owner</b></label>
+                    <input type="text" name="project[owner]" class="form-control" placeholder="Enter owner ID" required />
+                    <div class="invalid-feedback">Owner ID is mandatory.</div>
+                </div>
+
+                <!-- Reviews (Optional) -->
+                <div class="mb-3">
+                    <label for="reviews" class="form-label"><b>Reviews (Optional)</b></label>
+                    <textarea name="project[reviews]" class="form-control" placeholder="Enter reviews (if any, comma-separated IDs)" cols="30" rows="3"></textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <button class="btn" type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Example of client-side validation (form will not submit if invalid)
+        (() => {
+            'use strict';
+            window.addEventListener('load', () => {
+                const forms = document.getElementsByClassName('needs-validation');
+                Array.prototype.filter.call(forms, (form) => {
+                    form.addEventListener('submit', (event) => {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+</body>

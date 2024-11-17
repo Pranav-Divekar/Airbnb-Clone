@@ -5,7 +5,7 @@ const wrapAsync = require("../utils/wrapAsync.js");
 const schemavalidate = require("../schemaforvalidate.js");
 const ExpressError = require("../utils/ExpressError.js");
 const Review = require("../models/review.js");
-const listing = require("../models/listing");
+const listing = require("../models/project.js");
 const {validateReview,isLoggedIn,isReviewAuthor} = require("../middleware.js"); 
 const reviewController = require("../controllers/reviews.js");
 

@@ -1,5 +1,5 @@
 const Review = require("../models/review.js");
-const listing = require("../models/listing");
+const listing = require("../models/project.js");
 const ExpressError = require("../utils/ExpressError.js");
 
 module.exports.createReview = async(req,res)=>{
